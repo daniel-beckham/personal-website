@@ -54,7 +54,7 @@ services:
       - 'stock_market_price_updater_static_volume:/app/backend/website/static'
   traefik:
     env_file: .env
-    image: 'traefik:v2.1.1'
+    image: 'traefik:v2.2.1'
     labels:
       - 'traefik.enable=true'
       # Router (certs)
