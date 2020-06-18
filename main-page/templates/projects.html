@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <title>Projects</title>
+</head>
+<body class="bg-light">
+  <div class="container">
+    <div class="pt-5 text-center">
+      <h1 class="display-4"><a href="/" class="text-dark">Daniel Beckham</a></h1>
+      <h1 class="font-weight-normal text-muted">Projects</h1>
+    </div>
+    <div class="row pt-5">
+      <div class="col-md-7 order-md-2">
+        <h2><a href="/stock-market-price-updater" class="text-dark">Stock Market Price Updater</a></h2>
+        <p class="lead">This is a single-page application that retrieves daily stock prices and also allows two years of
+          historical data to be viewed for each stock.</p>
+      </div>
+      <div class="col-md-5 order-md-1 img-preview">
+        <a href="{{ url_for('static', filename='img/stock-market-price-updater.png') }}">
+          <img class="img-fluid mx-auto shadow-sm"
+            src="{{ url_for('static', filename='img/stock-market-price-updater.png') }}"
+            alt="Stock Market Price Updater">
+        </a>
+      </div>
+    </div>
+    <div class="row py-5">
+      <div class="col-md-7 order-md-2">
+        <h2><a href="https://github.com/beckhamd/nasa-imagery-fetcher" class="text-dark">NASA Imagery
+            Fetcher</a></h2>
+        <p class="lead">This is an Android app that fetches images from NASA's Image of the Day and Astronomy Picture of
+          the Day services.</p>
+      </div>
+      <div class="col-md-5 order-md-1 img-preview">
+        <a href="{{ url_for('static', filename='img/nasa-imagery-fetcher.png') }}">
+          <img class="img-fluid mx-auto shadow-sm"
+            src="{{ url_for('static', filename='img/nasa-imagery-fetcher.png') }}" alt="NASA Imagery Fetcher">
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="img-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div class="modal-content shadow-lg border-0">
+        <div class="modal-body p-0 overflow-hidden">
+          <a href="{{ url_for('projects') }}" data-dismiss="modal">
+            <img class="img-fluid m-auto img-modal-body" style="flex: 0 0 auto;" src="">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script>
+    $(function () {
+      $('.img-preview').on('click', function () {
+        event.preventDefault();
+        $('.img-modal-body').attr('src', $(this).find('img').attr('src'));
+        $('#img-modal').modal('show');
+      });
+    });
+  </script>
+</body>
+</html>
