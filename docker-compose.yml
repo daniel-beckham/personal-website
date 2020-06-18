@@ -29,6 +29,8 @@ services:
     build:
       context: ./stock-market-price-updater
       dockerfile: ./backend/Dockerfile
+      args:
+        - SUBDIRECTORY=${STOCK_MARKET_PRICE_UPDATER_SUBDIRECTORY}
     command: gunicorn --bind 0.0.0.0:5000 main:app
     depends_on:
       - db_dependency
@@ -48,7 +50,7 @@ services:
       context: ./stock-market-price-updater
       dockerfile: ./frontend/Dockerfile
       args:
-        - SUBDIRECTORY=${SUBDIRECTORY}
+        - SUBDIRECTORY=${STOCK_MARKET_PRICE_UPDATER_SUBDIRECTORY}
     env_file: .env
     volumes:
       - 'stock_market_price_updater_static_volume:/app/backend/website/static'
