@@ -1,5 +1,8 @@
 accessLog:
   filePath: "./access.log"
+  filters:    
+    statusCodes:
+      - "200"
 
 api:
   dashboard: true
