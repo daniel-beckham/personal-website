@@ -1,3 +1,6 @@
+accessLog:
+  filePath: "./access.log"
+
 api:
   dashboard: true
 

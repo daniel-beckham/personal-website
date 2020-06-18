@@ -88,6 +88,7 @@ services:
     restart: unless-stopped
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
+      - './access.log:/access.log'
       - './acme.json:/acme.json'
       - './traefik.yml:/traefik.yml:ro'
 
