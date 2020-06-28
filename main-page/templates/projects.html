@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <title>Projects</title>
 </head>
@@ -45,8 +45,8 @@
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content shadow-lg border-0">
         <div class="modal-body p-0 overflow-hidden">
-          <a href="{{ url_for('projects') }}" data-dismiss="modal">
-            <img class="img-fluid m-auto img-modal-body" style="flex: 0 0 auto;" src="">
+          <a class="img-link" href="{{ url_for('projects') }}" data-dismiss="modal">
+            <img class="img-fluid m-auto img-full" style="flex: 0 0 auto;" src="data:," alt="">
           </a>
         </div>
       </div>
@@ -58,7 +58,11 @@
     $(function () {
       $('.img-preview').on('click', function () {
         event.preventDefault();
-        $('.img-modal-body').attr('src', $(this).find('img').attr('src'));
+        $('.img-link').attr('href', $(this).find('a').attr('href'));
+        $('.img-full').attr({
+          'src': $(this).find('img').attr('src'),
+          'alt': $(this).find('img').attr('alt')
+        });
         $('#img-modal').modal('show');
       });
     });
