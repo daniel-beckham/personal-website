@@ -1,0 +1,11 @@
+a {
+    text-decoration: none;
+}
+
+div.header {
+    background-color: #e9ecef;
+}
+
+div.links {
+    margin-left: -0.25rem !important;
+}

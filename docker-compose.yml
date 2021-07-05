@@ -14,17 +14,6 @@ services:
     depends_on:
       - db
     image: dadarek/wait-for-dependencies
-  main_page:
-    build: ./main-page
-    command: gunicorn --bind 0.0.0.0:4000 main:app
-    expose:
-      - '4000'
-    labels:
-      - 'traefik.enable=true'
-      - 'traefik.http.routers.main-page.entrypoints=web-secure'
-      - 'traefik.http.routers.main-page.rule=Host(`danielbeckham.com`)'
-      - 'traefik.http.routers.main-page.tls=true'
-    restart: unless-stopped
   stock_market_price_updater_backend:
     build:
       context: ./stock-market-price-updater
@@ -56,7 +45,7 @@ services:
       - 'stock_market_price_updater_static_volume:/app/backend/website/static'
   traefik:
     env_file: .env
-    image: 'traefik:v2.2.1'
+    image: 'traefik:v2.4.9'
     labels:
       - 'traefik.enable=true'
       # Router (certs)
@@ -93,7 +82,25 @@ services:
       - './access.log:/access.log'
       - './acme.json:/acme.json'
       - './traefik.yml:/traefik.yml:ro'
-
+  website:
+    build:
+      context: ./website
+      dockerfile: ./Dockerfile
+      args:
+        - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY}
+        - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
+        - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
+        - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
+    command: gunicorn --bind 0.0.0.0:4000 website.wsgi:application
+    env_file: .env
+    expose:
+      - '4000'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.main-page.entrypoints=web-secure'
+      - 'traefik.http.routers.main-page.rule=Host(`danielbeckham.com`)'
+      - 'traefik.http.routers.main-page.tls=true'
+    restart: unless-stopped
 volumes:
   db_volume:
   stock_market_price_updater_static_volume:
