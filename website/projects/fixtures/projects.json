@@ -8,7 +8,8 @@
             "live_demo_link": "/stock-market-price-updater",
             "github_page_link": "https://github.com/daniel-beckham/stock-market-price-updater",
             "description": "This is a single-page application that retrieves daily stock prices and also allows two years of historical data to be viewed for each stock.",
-            "technologies": "Flask, React, Docker"
+            "technologies": "Flask, React, Webpack, Babel, PostgreSQL, Docker",
+            "languages": "HTML, CSS, JavaScript, Python"
         }
     },
     {
@@ -20,7 +21,8 @@
             "live_demo_link": "",
             "github_page_link": "https://github.com/daniel-beckham/nasa-imagery-fetcher",
             "description": "This is an Android app that fetches images from NASA's Image of the Day and Astronomy Picture of the Day services.",
-            "technologies": "Java"
+            "technologies": "",
+            "languages": "Java"
         }
     }
 ]

@@ -9,4 +9,5 @@ class Project(models.Model):
     live_demo_link = models.CharField(max_length=200, blank=True)
     github_page_link = models.URLField(blank=True)
     description = models.TextField()
-    technologies = models.TextField()
+    technologies = models.TextField(blank=True)
+    languages = models.TextField(blank=True)

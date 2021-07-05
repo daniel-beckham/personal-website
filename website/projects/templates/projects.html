@@ -25,9 +25,16 @@
         {% endif %}
       </div>
       <p class="lead">{{ project.description }}</p>
-      <p class="lead">
+      {% if project.technologies %}
+      <p class="lead m-0">
         <span class="fw-bold">Technologies:</span> {{ project.technologies }}
       </p>
+      {% endif %}
+      {% if project.languages %}
+      <p class="lead m-0">
+        <span class="fw-bold">Languages:</span> {{ project.languages }}
+      </p>
+      {% endif %}
     </div>
     <div class="col-md-5 order-md-1 img-preview">
       <a href="{% static project.image %}">

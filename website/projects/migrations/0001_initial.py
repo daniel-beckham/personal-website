@@ -20,7 +20,8 @@ class Migration(migrations.Migration):
                 ('live_demo_link', models.CharField(blank=True, max_length=200)),
                 ('github_page_link', models.URLField(blank=True)),
                 ('description', models.TextField()),
-                ('technologies', models.TextField()),
+                ('technologies', models.TextField(blank=True)),
+                ('languages', models.TextField(blank=True)),
             ],
         ),
     ]
