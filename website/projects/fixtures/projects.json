@@ -8,7 +8,7 @@
             "live_demo_link": "/stock-market-price-updater",
             "github_page_link": "https://github.com/daniel-beckham/stock-market-price-updater",
             "description": "This is a single-page application that retrieves daily stock prices and also allows two years of historical data to be viewed for each stock.",
-            "technologies": "Flask, React, Webpack, Babel, PostgreSQL, SQLAlchemy, Docker",
+            "technologies": "Flask, React, Webpack, Babel, PostgreSQL, Docker",
             "languages": "HTML, CSS, JavaScript, Python"
         }
     },
