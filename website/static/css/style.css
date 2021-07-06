@@ -7,5 +7,6 @@ div.header {
 }
 
 div.links {
+    margin-bottom: 0.5rem !important;
     margin-left: -0.25rem !important;
 }

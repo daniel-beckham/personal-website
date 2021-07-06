@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% block title %}{{ page_title }}{% endblock %}
 {% block body %}
 <div class="container">
   <h5>
@@ -7,7 +8,7 @@
       <ol class="breadcrumb bg-transparent my-4 p-0">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
         <li class="breadcrumb-item active" aria-current="page">
-          <span class="fw-bold">{% block title %}Projects{% endblock %}</span>
+          <span class="fw-bold">{{ page_title }}</span>
         </li>
       </ol>
     </nav>
@@ -25,15 +26,23 @@
         {% endif %}
       </div>
       <p class="lead">{{ project.description }}</p>
-      {% if project.technologies %}
-      <p class="lead m-0">
-        <span class="fw-bold">Technologies:</span> {{ project.technologies }}
-      </p>
-      {% endif %}
-      {% if project.languages %}
-      <p class="lead m-0">
-        <span class="fw-bold">Languages:</span> {{ project.languages }}
-      </p>
+      {% if project.technologies or project.languages %}
+      <table class="table table-borderless table-striped shadow-sm">
+        <tbody>
+          {% if project.technologies %}
+          <tr>
+            <th class="w-25" scope="row">Technologies</th>
+            <td>{{ project.technologies }}</td>
+          </tr>
+          {% endif %}
+          {% if project.languages %}
+          <tr>
+            <th class="w-25" scope="row">Languages</th>
+            <td>{{ project.languages }}</td>
+          </tr>
+          {% endif %}
+        </tbody>
+      </table>
       {% endif %}
     </div>
     <div class="col-md-5 order-md-1 img-preview">
