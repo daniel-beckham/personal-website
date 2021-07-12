@@ -97,9 +97,9 @@ services:
       - '4000'
     labels:
       - 'traefik.enable=true'
-      - 'traefik.http.routers.main-page.entrypoints=web-secure'
-      - 'traefik.http.routers.main-page.rule=Host(`danielbeckham.com`)'
-      - 'traefik.http.routers.main-page.tls=true'
+      - 'traefik.http.routers.website.entrypoints=web-secure'
+      - 'traefik.http.routers.website.rule=Host(`danielbeckham.com`)'
+      - 'traefik.http.routers.website.tls=true'
     restart: unless-stopped
 volumes:
   db_volume:
