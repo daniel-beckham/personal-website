@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.8'
 
 services:
   db:
@@ -14,16 +14,43 @@ services:
     depends_on:
       - db
     image: dadarek/wait-for-dependencies
+  movie_database_viewer_backend:
+    build:
+      context: ./movie-database-viewer
+      dockerfile: ./backend/Dockerfile
+    command: npm run start
+    env_file: .env
+    environment:
+      - SUBDIRECTORY=${MOVIE_DATABASE_VIEWER_SUBDIRECTORY}
+    expose:
+      - '4000'
+    labels:
+      - 'traefik.enable=true'
+      - 'traefik.http.routers.movie-database-viewer.entrypoints=web-secure'
+      - 'traefik.http.routers.movie-database-viewer.rule=Host(`danielbeckham.com`) && PathPrefix(`/movie-database-viewer`)'
+      - 'traefik.http.routers.movie-database-viewer.tls=true'
+    restart: unless-stopped
+    volumes:
+      - 'movie_database_viewer_frontend_static_volume:/app/frontend/build'
+  movie_database_viewer_frontend:
+     build:
+      context: ./movie-database-viewer
+      dockerfile: ./frontend/Dockerfile
+      args:
+        - SUBDIRECTORY=${MOVIE_DATABASE_VIEWER_SUBDIRECTORY}
+     env_file: .env
+     volumes:
+        - 'movie_database_viewer_frontend_static_volume:/app/frontend/build'
   stock_market_price_updater_backend:
     build:
       context: ./stock-market-price-updater
       dockerfile: ./backend/Dockerfile
-      args:
-        - SUBDIRECTORY=${STOCK_MARKET_PRICE_UPDATER_SUBDIRECTORY}
     command: gunicorn --bind 0.0.0.0:5000 main:app
     depends_on:
       - db_dependency
     env_file: .env
+    environment:
+      - SUBDIRECTORY=${STOCK_MARKET_PRICE_UPDATER_SUBDIRECTORY}
     expose:
       - '5000'
     labels:
@@ -91,10 +118,10 @@ services:
         - DJANGO_SUPERUSER_EMAIL=${DJANGO_SUPERUSER_EMAIL}
         - DJANGO_SUPERUSER_PASSWORD=${DJANGO_SUPERUSER_PASSWORD}
         - DJANGO_SUPERUSER_USERNAME=${DJANGO_SUPERUSER_USERNAME}
-    command: gunicorn --bind 0.0.0.0:4000 website.wsgi:application
+    command: gunicorn --bind 0.0.0.0:3000 website.wsgi:application
     env_file: .env
     expose:
-      - '4000'
+      - '3000'
     labels:
       - 'traefik.enable=true'
       - 'traefik.http.routers.website.entrypoints=web-secure'
@@ -103,4 +130,5 @@ services:
     restart: unless-stopped
 volumes:
   db_volume:
+  movie_database_viewer_frontend_static_volume:
   stock_market_price_updater_static_volume:

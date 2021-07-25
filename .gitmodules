@@ -1,3 +1,6 @@
 [submodule "stock-market-price-updater"]
 	path = stock-market-price-updater
 	url = https://github.com/beckhamd/stock-market-price-updater
+[submodule "movie-database-viewer"]
+	path = movie-database-viewer
+	url = https://github.com/daniel-beckham/movie-database-viewer

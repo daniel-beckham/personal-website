@@ -3,24 +3,37 @@
         "model": "projects.project",
         "pk": 1,
         "fields": {
-            "name": "Stock Market Price Updater",
-            "image": "/img/stock-market-price-updater.png",
-            "live_demo_link": "/stock-market-price-updater",
-            "github_page_link": "https://github.com/daniel-beckham/stock-market-price-updater",
-            "description": "This is a single-page application that retrieves daily stock prices and also allows two years of historical data to be viewed for each stock.",
-            "technologies": "Flask, React, Webpack, Babel, PostgreSQL, Docker",
-            "languages": "HTML, CSS, JavaScript, Python"
+            "name": "Movie Database Viewer",
+            "image": "/img/movie-database-viewer.png",
+            "live_demo_link": "/movie-database-viewer",
+            "github_page_link": "https://github.com/daniel-beckham/movie-database-viewer",
+            "description": "Web app that displays searchable information about movies, TV shows, and people",
+            "technologies": "Node.js, Express, React, Docker",
+            "languages": "HTML, CSS, TypeScript"
         }
     },
     {
         "model": "projects.project",
         "pk": 2,
         "fields": {
+            "name": "Stock Market Price Updater",
+            "image": "/img/stock-market-price-updater.png",
+            "live_demo_link": "/stock-market-price-updater",
+            "github_page_link": "https://github.com/daniel-beckham/stock-market-price-updater",
+            "description": "Web app that retrieves the latest stock prices on a daily basis and allows the data to be viewed as a series of interactive charts",
+            "technologies": "Flask, React, Webpack, Babel, PostgreSQL, Docker",
+            "languages": "HTML, CSS, JavaScript, Python"
+        }
+    },
+    {
+        "model": "projects.project",
+        "pk": 3,
+        "fields": {
             "name": "NASA Imagery Fetcher",
             "image": "/img/nasa-imagery-fetcher.png",
             "live_demo_link": "",
             "github_page_link": "https://github.com/daniel-beckham/nasa-imagery-fetcher",
-            "description": "This is an Android app that fetches images from NASA's Image of the Day and Astronomy Picture of the Day services.",
+            "description": "Android app that fetches images from NASA's Image of the Day and Astronomy Picture of the Day services",
             "technologies": "Android Studio",
             "languages": "Java"
         }
