@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /movie-database-viewer/api/
+Disallow: /movie-database-viewer/movie/
+Disallow: /movie-database-viewer/person/
+Disallow: /movie-database-viewer/tv/
