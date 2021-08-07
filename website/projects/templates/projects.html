@@ -2,19 +2,9 @@
 {% load static %}
 {% block title %}{{ page_title }}{% endblock %}
 {% block body %}
-<div class="container">
-  <h5>
-    <nav aria-label="breadcrumb">
-      <ol class="breadcrumb bg-transparent my-4 p-0">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">
-          <span class="fw-bold">{{ page_title }}</span>
-        </li>
-      </ol>
-    </nav>
-  </h5>
+<div class="container pt-5">
   {% for project in projects %}
-  <div class="row pb-5">
+  <div class="row gx-5 pb-5">
     <div class="col-md-7 order-md-2">
       <h2>{{ project.name }}</h2>
       <div class="links">
@@ -47,7 +37,7 @@
     </div>
     <div class="col-md-5 order-md-1 img-preview">
       <a href="{% static project.image %}">
-        <img class="img-fluid mx-auto shadow-sm" src="{% static project.image %}" alt="{{ project.name }}">
+        <img class="img-fluid mx-auto shadow" src="{% static project.image %}" alt="{{ project.name }}">
       </a>
     </div>
   </div>
