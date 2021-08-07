@@ -6,13 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="{% static "css/style.css" %}">
-  <title>{% block title %}Daniel Beckham{% endblock %}</title>
+  <title>{% block title %}{{page_information.author_name}}{% endblock %}</title>
 </head>
 <body class="bg-light">
   <div class="header py-4">
     <div class="container text-center">
-      <h1 class="display-4">Daniel Beckham</h1>
-      <h2 class="fw-normal text-muted">Software Engineer</h2>
+      <h1 class="display-4">
+        <a href="/" class="text-dark">{{page_information.author_name}}</a>
+      </h1>
+      <h2 class="fw-normal text-muted">{{page_information.author_title}}</h2>
     </div>
   </div>
   {% block body %}{% endblock %}
